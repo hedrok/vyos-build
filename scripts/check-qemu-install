@@ -1118,6 +1118,7 @@ try:
             log.error(tmp)
             raise Exception(tmp)
 
+        c.sendline('journalctl --no-pager')
         c.sendline('echo EXITCODE:$\x16?')
         i = c.expect(['EXITCODE:0', 'EXITCODE:\d+'])
         if i == 0:
